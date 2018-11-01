@@ -4,12 +4,12 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Xtreme™ Kernel for Xiaomi SDM636 by 1582130940
+kernel.string=Xtreme™ Kernel for Xiaomi SDM660 by 1582130940
 do.devicecheck=1
-do.modules=1
+do.modules=0
 do.cleanup=1
 do.cleanuponabort=1
-device.name1=whyred
+device.name1=wayne
 device.name2=
 device.name3=
 device.name4=

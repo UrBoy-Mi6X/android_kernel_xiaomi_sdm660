@@ -2,28 +2,27 @@
 export ARCH=arm64
 export SUBARCH=arm64
 export HEADER_ARCH=arm64
-export CLANG_PATH="${HOME}/prebuilts/clang/host/linux-x86/clang-r339409"
+export CLANG_PATH="${HOME}/android/pe/prebuilts/clang/host/linux-x86/clang-r328903"
 export CLANG_TRIPLE="aarch64-linux-gnu-"
 export CC="$CLANG_PATH/bin/clang"
-export KBUILD_COMPILER_STRING="`cat $CLANG_PATH/VERSION`"
-export CROSS_COMPILE="${HOME}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-6.4.1/bin/aarch64-linux-gnu-"
+export KBUILD_COMPILER_STRING="LLVM-test"
+export CROSS_COMPILE="${HOME}/android/pe/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
 
-sdm636() {
+sdm660() {
 rm AnyKernel2/Image.gz-dtb
 rm -rf out
 date="`date +%Y%m%d%H%M%S`"
 export LOCALVERSION=-$date
-zipname="Mi_SDM636_Xtreme™_Kernel-$date.zip"
-make O=out mrproper&&make O=out whyred_user_defconfig&&make O=out -j8
+zipname="Mi_SDM660_Xtreme™_Kernel-$date.zip"
+make O=out mrproper&&make O=out wayne_user_defconfig&&make O=out -j16
 cp -f out/arch/arm64/boot/Image.gz-dtb AnyKernel2
-cp -f out/drivers/staging/qcacld-3.0/wlan.ko AnyKernel2/modules/vendor/lib/modules/qca_cld3/qca_cld3_wlan.ko
 cd AnyKernel2
 zip -9 -r "$zipname" *
 cp -f "$zipname" ~
 rm -f "$zipname"
 }
 
-if [ "$1" == sdm636 ]
+if [ "$1" == sdm660 ]
 then
-sdm636
+sdm660
 fi
